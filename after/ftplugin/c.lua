@@ -1,6 +1,10 @@
 vim.cmd [[
-    " Norminette
-    " au BufWrite *.c Norminette
+    set noet ts=4 sts=4 sw=4 tw=80 cc=+1
+    highlight ColorColumn guibg=darkred
+
+    Norminette
+    au! BufWritePre
+    au BufWrite *.c Norminette
 
     let g:user42 = "vkazanav"
     let g:mail42 = "vkazanav@student.42.fr"
