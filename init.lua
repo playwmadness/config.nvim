@@ -2,21 +2,23 @@ vim.g.python3_host_prog = vim.env.HOME .. '/.local/venv/nvim/bin/python'
 
 require "plugins"
 
-vim.cmd [[
-" Important!!
-if has('termguicolors')
-  set termguicolors
-endif
-set background=dark
+-- vim.cmd [[
+-- " Important!!
+-- if has('termguicolors')
+--   set termguicolors
+-- endif
+-- set background=dark
+--
+-- " Available values: 'hard', 'medium'(default), 'soft'
+-- let g:gruvbox_material_background = 'hard'
+--
+-- let g:gruvbox_material_better_performance = 1
+-- colorscheme gruvbox-material
+-- colorscheme kanagawa-dragon
+-- colorscheme ash
+-- ]]
 
-" Available values: 'hard', 'medium'(default), 'soft'
-let g:gruvbox_material_background = 'hard'
-
-let g:gruvbox_material_better_performance = 1
-colorscheme gruvbox-material
-colorscheme kanagawa-dragon
-colorscheme ash
-]]
+vim.cmd "color witchcraft"
 
 vim.treesitter.language.register('rust', 'rhai')
 

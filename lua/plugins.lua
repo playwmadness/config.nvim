@@ -232,4 +232,13 @@ require('lazy').setup({
     },
     lazy = true
   },
+
+  'norcalli/nvim-colorizer.lua',
+
+  {
+    "Djancyp/custom-theme.nvim",
+    config = function()
+      require("custom-theme").setup()
+    end,
+  },
 })
