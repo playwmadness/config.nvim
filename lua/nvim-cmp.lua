@@ -64,7 +64,7 @@ local lspconfig = require('lspconfig')
 lspconfig.clangd.setup {
   capabilities = capabilities,
   cmd = {
-    vim.env.HOME .. "/Documents/clangd_20.1.0/bin/clangd"
+    vim.env.HOME .. "/Documents/clangd_20.1.0/bin/clangd",
   },
 }
 

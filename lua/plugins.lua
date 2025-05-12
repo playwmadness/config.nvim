@@ -137,6 +137,7 @@ require('lazy').setup({
       nnore <silent> <localleader>fg :lua require'telescope.builtin'.live_grep{}<CR>
       nnore <silent> <localleader>fd :lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>
       nnore <silent> <localleader>fs :lua require'telescope.builtin'.lsp_document_symbols{}<CR>
+      nnore <silent> <localleader>fm :lua require'telescope.builtin'.man_pages{sections={"ALL"}}<CR>
       ]]
     end
   },
