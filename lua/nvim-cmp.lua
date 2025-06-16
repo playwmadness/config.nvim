@@ -84,7 +84,7 @@ lspconfig.rust_analyzer.setup {
 lspconfig.pyright.setup {
   capabilities = capabilities,
   cmd = {
-    "/home/vkazanav/.local/venv/nvim/bin/pyright-langserver",
+    vim.env.HOME .. "/.local/venv/nvim/bin/pyright-langserver",
     "--stdio",
   },
 }

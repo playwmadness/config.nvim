@@ -136,6 +136,7 @@ require('lazy').setup({
       nnore <silent> <localleader>fh :lua require'telescope.builtin'.help_tags{}<CR>
       nnore <silent> <localleader>fg :lua require'telescope.builtin'.live_grep{}<CR>
       nnore <silent> <localleader>fd :lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>
+      nnore <silent> <localleader>fD :lua require'telescope.builtin'.diagnostics{}<CR>
       nnore <silent> <localleader>fs :lua require'telescope.builtin'.lsp_document_symbols{}<CR>
       nnore <silent> <localleader>fm :lua require'telescope.builtin'.man_pages{sections={"ALL"}}<CR>
       ]]
@@ -241,5 +242,16 @@ require('lazy').setup({
     config = function()
       require("custom-theme").setup()
     end,
+  },
+
+  {
+    -- "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    -- config = function()
+    --   require("lsp_lines").setup()
+    --   vim.diagnostic.config({
+    --     virtual_text = true,
+    --     virtual_lines = { only_current_line = true },
+    --   })
+    -- end,
   },
 })

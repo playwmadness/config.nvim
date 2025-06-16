@@ -1,5 +1,9 @@
 vim.g.python3_host_prog = vim.env.HOME .. '/.local/venv/nvim/bin/python'
 
+vim.diagnostic.config({
+  virtual_text = true,
+})
+
 require "plugins"
 
 -- vim.cmd [[
@@ -18,7 +22,7 @@ require "plugins"
 -- colorscheme ash
 -- ]]
 
-vim.cmd "color witchcraft"
+vim.cmd "color witchcraft-bright"
 
 vim.treesitter.language.register('rust', 'rhai')
 
@@ -82,6 +86,10 @@ vim.cmd "nohls"
 -- if vim.api.nvim_buf_get_name(0) == "" then
 --   vim.cmd "Neotree current reveal"
 -- end
+
+-- vim.diagnostic.config({
+--   virtual_text = true,
+-- })
 
 for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
   local default_diagnostic_handler = vim.lsp.handlers[method]
