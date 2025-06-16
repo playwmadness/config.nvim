@@ -4,31 +4,31 @@ local palette = {
   black = "black",
   background = "black",
 
-  text = "#bcbcbc",
-  muted = "#404040",
-  upmuted = "#898989",
-  dark = "#232323",
-  toodark = "#121212",
+  text = "#e0e0e0",
+  muted = "#606060",
+  upmuted = "#a0a0a0",
+  dark = "#3c3c3c",
+  toodark = "#1a1a1a",
 
-  pink = "#cf89a9",
+  pink = "#f1a3b1",
 
-  red = "#bf6162",
-  lowred = "#9f6162",
+  red = "#ff7f7f",
+  lowred = "#c77f7f",
 
-  yellow = "#f0b440",
+  yellow = "#ffcc66",
 
-  orange = "#f99440",
-  loworange = "#e07430",
+  orange = "#ffb366",
+  loworange = "#ff8c30",
 
-  purple = "#b090c0",
+  purple = "#d1a3d0",
 
-  green = "#70a080",
-  upgreen = "#80a970",
+  green = "#8cc8a0",
+  upgreen = "#a0c8a0",
 
-  blue = "#8990c0",
-  lowblue = "#50609f",
+  blue = "#a0b3e0",
+  lowblue = "#6a8fd9",
 
-  cyan = "#70809f",
+  cyan = "#8cb3d9",
 }
 local p = palette
 
@@ -137,8 +137,25 @@ groups["@number"] = { link = "Constant" }
 
 groups["@module.rust"] = { fg = p.red }
 
+groups["@lsp.type.namespace"] = { fg = p.purple }
+
 groups["@keyword.directive"] = { link = "PreProc" }
 groups["@keyword.import"] = { link = "PreProc" }
+
+groups["@markup.heading.1"] = { fg = p.yellow, bold = true }
+groups["@markup.heading.2"] = { fg = p.orange, bold = true }
+groups["@markup.heading.3"] = { fg = p.red, bold = true }
+groups["@markup.heading.4"] = { fg = p.purple }
+groups["@markup.heading"] = { fg = p.cyan }
+
+groups["@markup.link"] = { fg = p.cyan }
+groups["@markup.link.label"] = { fg = p.purple }
+
+groups["@markup.list"] = { fg = p.cyan, bold = true }
+groups["@markup.list.unchecked"] = { fg = p.red, bold = true }
+groups["@markup.list.checked"] = { fg = p.green, bold = true }
+
+groups["@markup.italic"] = { fg = p.cyan }
 
 for name, config in pairs(groups) do
   hi(name, config)

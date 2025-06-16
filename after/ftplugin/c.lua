@@ -1,6 +1,9 @@
 vim.cmd [[
-    " Norminette
-    " au BufWrite *.c Norminette
+    au! BufWritePre
+    au BufWrite *.c,*.h Norminette
+    au BufReadPost *.c,*.h Norminette
+
+    setl ts=4 sts=4 sw=4 noet cc=+1 tw=80
 
     let g:user42 = "vkazanav"
     let g:mail42 = "vkazanav@student.42.fr"
@@ -154,6 +157,29 @@ vim.cmd [[
 
     " Bind command and shortcut
     command! Stdheader call s:stdheader ()
-    map <F1> :Stdheader<CR>
     " autocmd BufWritePre * call s:update ()
+]]
+
+local function create_include_guard()
+  local filename = vim.fn.expand("%:t")
+
+  if not filename:match("%.h$") then
+    return
+  end
+
+  local basename = vim.fn.fnamemodify(filename, ":r")
+  local guard_name = basename:upper() .. "_H"
+  local include_guard = {
+    string.format("#ifndef %s", guard_name),
+    string.format("# define %s", guard_name),
+    "",
+    string.format("#endif // %s", guard_name)
+  }
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, include_guard)
+end
+
+vim.api.nvim_create_user_command('IncludeGuard', create_include_guard, {})
+
+vim.cmd [[
+  map <F1> :IncludeGuard<CR>:Stdheader<CR>
 ]]

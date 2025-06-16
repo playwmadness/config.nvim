@@ -64,7 +64,7 @@ local lspconfig = require('lspconfig')
 lspconfig.clangd.setup {
   capabilities = capabilities,
   cmd = {
-    "/usr/bin/clangd-17",
+    vim.env.HOME .. "/Documents/clangd_20.1.0/bin/clangd",
   },
 }
 
@@ -84,15 +84,15 @@ lspconfig.rust_analyzer.setup {
 lspconfig.pyright.setup {
   capabilities = capabilities,
   cmd = {
-    "/home/vaiva/.local/venv/nvim/bin/pyright-langserver",
+    vim.env.HOME .. "/.local/venv/nvim/bin/pyright-langserver",
     "--stdio",
   },
 }
 
-lspconfig.cmake.setup {
-  capabilities = capabilities,
-}
-
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-}
+-- lspconfig.cmake.setup {
+--   capabilities = capabilities,
+-- }
+-- 
+-- lspconfig.lua_ls.setup {
+--   capabilities = capabilities,
+-- }
