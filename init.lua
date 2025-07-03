@@ -22,7 +22,8 @@ require "plugins"
 -- colorscheme ash
 -- ]]
 
-vim.cmd "color witchcraft-bright"
+-- vim.cmd "color witchcraft-bright"
+vim.cmd "color kanagawa-wave"
 
 vim.treesitter.language.register('rust', 'rhai')
 
