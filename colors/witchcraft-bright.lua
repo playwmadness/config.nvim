@@ -110,7 +110,7 @@ local groups = {
   Type                        = { fg = p.lowred },
   Special                     = { fg = p.lowred },
 
-  PreProc                     = { fg = p.lowred },
+  PreProc                     = { fg = p.lowred, italic = true },
   MatchParen                  = { bg = p.muted },
   Operator                    = { fg = p.upmuted },
   Delimiter                   = { fg = p.upmuted },
@@ -137,7 +137,8 @@ groups["@number"] = { link = "Constant" }
 
 groups["@module.rust"] = { fg = p.red }
 
-groups["@lsp.type.namespace"] = { fg = p.purple }
+groups["@lsp.type.namespace"] = { fg = p.muted }
+groups["@attribute.cpp"] = { fg = p.muted }
 
 groups["@keyword.directive"] = { link = "PreProc" }
 groups["@keyword.import"] = { link = "PreProc" }
@@ -147,6 +148,11 @@ groups["@markup.heading.2"] = { fg = p.orange, bold = true }
 groups["@markup.heading.3"] = { fg = p.red, bold = true }
 groups["@markup.heading.4"] = { fg = p.purple }
 groups["@markup.heading"] = { fg = p.cyan }
+
+groups["@string.escape"] = { fg = p.yellow, bold = true }
+
+groups["@lsp.mod.defaultLibrary"] = { fg = p.cyan }
+groups["@lsp.type.macro"] = { italic = true }
 
 groups["@markup.link"] = { fg = p.cyan }
 groups["@markup.link.label"] = { fg = p.purple }
