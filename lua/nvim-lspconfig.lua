@@ -1,4 +1,4 @@
-local lspconfig = require('lspconfig')
+local lspconfig = vim.lsp.config
 
 vim.cmd [[
   au BufWritePre * silent! lua vim.lsp.buf.format()

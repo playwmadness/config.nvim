@@ -59,16 +59,17 @@ cmp.setup.cmdline(':', {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
+local lspconfig = vim.lsp.config
 
-lspconfig.clangd.setup {
+lspconfig('clangd', {
   capabilities = capabilities,
   cmd = {
     vim.env.HOME .. "/Documents/clangd_20.1.0/bin/clangd",
   },
-}
+})
+vim.lsp.enable('clangd')
 
-lspconfig.rust_analyzer.setup {
+lspconfig('rust_analyzer', {
   capabilities = capabilities,
   settings = {
     ['rust-analyzer'] = {
@@ -79,15 +80,13 @@ lspconfig.rust_analyzer.setup {
       }
     },
   },
-}
+})
+vim.lsp.enable('rust_analyzer')
 
-lspconfig.pyright.setup {
+lspconfig('pyright', {
   capabilities = capabilities,
-  cmd = {
-    vim.env.HOME .. "/.local/venv/nvim/bin/pyright-langserver",
-    "--stdio",
-  },
-}
+})
+vim.lsp.enable('pyright')
 
 -- lspconfig.cmake.setup {
 --   capabilities = capabilities,
