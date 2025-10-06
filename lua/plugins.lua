@@ -106,7 +106,12 @@ require('lazy').setup({
     build = { ':TSUpdateSync' },
     config = function()
       require 'nvim-treesitter.configs'.setup {
-        ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline' },
+        ensure_installed = {
+          'c', 'lua', 'vim',
+          'vimdoc', 'query',
+          'markdown', 'markdown_inline',
+          'rust', 'ron', 'toml',
+        },
         auto_install = true,
         highlight = {
           enable = true,
