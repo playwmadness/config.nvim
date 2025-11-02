@@ -24,6 +24,7 @@ require('lazy').setup({
   { 'xero/miasma.nvim',                 priority = 1000 },
   { 'aktersnurra/no-clown-fiesta.nvim', priority = 1000 },
   { 'drewxs/ash.nvim',                  priority = 1000 },
+  { 'rmehri01/onenord.nvim',            priority = 1000 },
 
   'rstacruz/vim-closer',
   {

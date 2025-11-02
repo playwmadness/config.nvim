@@ -22,8 +22,9 @@ require "plugins"
 -- colorscheme ash
 -- ]]
 
-vim.cmd "color kanagawa-dragon"
-vim.cmd "color kanagawa-wave"
+-- vim.cmd "color kanagawa-dragon"
+-- vim.cmd "color kanagawa-wave"
+vim.cmd "color onenord"
 
 vim.treesitter.language.register('rust', 'rhai')
 

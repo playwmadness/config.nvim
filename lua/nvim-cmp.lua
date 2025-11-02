@@ -84,9 +84,16 @@ lspconfig('rust_analyzer', {
 vim.lsp.enable('rust_analyzer')
 
 lspconfig('pyright', {
+  cmd = {
+    vim.env.HOME .. '/.local/venv/nvim/bin/pyright-langserver',
+    '--stdio',
+  },
   capabilities = capabilities,
 })
 vim.lsp.enable('pyright')
+
+lspconfig('ts_ls', { capabilities = capabilities })
+vim.lsp.enable('ts_ls')
 
 -- lspconfig.cmake.setup {
 --   capabilities = capabilities,

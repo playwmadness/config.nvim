@@ -1,7 +1,7 @@
 vim.cmd [[
-    au! BufWritePre
-    au BufWrite *.c,*.h Norminette
-    au BufReadPost *.c,*.h Norminette
+    " au! BufWritePre
+    " au BufWrite *.c,*.h Norminette
+    " au BufReadPost *.c,*.h Norminette
 
     setl ts=4 sts=4 sw=4 noet cc=+1 tw=80
 
