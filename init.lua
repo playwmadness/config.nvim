@@ -32,6 +32,8 @@ local function nore(where, lhs, rhs, silent)
   vim.keymap.set(where, lhs, rhs, { silent = silent })
 end
 
+nore("n", "<localleader>i", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, true)
+
 nore("n", "<localleader>tt", ":tab split<CR>", true)
 nore("n", "<Tab>", ":tabn<CR>", true)
 nore("n", "<S-Tab>", ":tabn<CR>", true)
