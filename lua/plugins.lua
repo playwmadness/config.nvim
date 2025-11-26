@@ -156,14 +156,6 @@ require('lazy').setup({
       vim.cmd 'au BufWritePre *.py,*.pyi silent! PyFormatSync'
     end
   },
-  {
-    'playwmadness/c-formatter-42.nvim',
-    build = { ':UpdateRemotePlugins' },
-    -- ft = { 'c' },
-    config = function()
-      vim.cmd 'au BufWritePre *.c Norimnette'
-    end
-  },
 
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
