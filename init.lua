@@ -59,8 +59,7 @@ set.nu             = true
 set.rnu            = true
 set.cul            = true
 set.culopt         = "both"
-set.fdm            = "expr"
-set.fdm            = "manual"
+set.fdm            = "syntax"
 set.hls            = true
 set.scs            = true
 set.ic             = true
@@ -81,9 +80,6 @@ set.cot            = "menuone,longest,preview"
 set.exrc           = true
 set.mouse          = ""
 set.foldlevelstart = 6
-
-set.fdm            = 'expr'
-vim.wo.foldexpr    = 'v:lua.vim.treesitter.foldexpr()'
 
 vim.cmd "nohls"
 
