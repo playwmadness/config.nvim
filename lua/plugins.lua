@@ -148,14 +148,6 @@ require('lazy').setup({
       ]]
     end
   },
-  {
-    'playwmadness/pyformat.nvim',
-    build = { ':UpdateRemotePlugins' },
-    -- ft = { 'python' },
-    config = function()
-      vim.cmd 'au BufWritePre *.py,*.pyi silent! PyFormatSync'
-    end
-  },
 
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
