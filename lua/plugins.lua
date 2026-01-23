@@ -106,7 +106,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = { ':TSUpdateSync' },
     config = function()
-      require 'nvim-treesitter.config'.setup {
+      require 'nvim-treesitter.configs'.setup {
         ensure_installed = {
           'c', 'lua', 'vim',
           'vimdoc', 'query',
