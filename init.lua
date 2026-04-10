@@ -12,18 +12,17 @@ require "plugins"
 --   set termguicolors
 -- endif
 -- set background=dark
---
+-- 
 -- " Available values: 'hard', 'medium'(default), 'soft'
--- let g:gruvbox_material_background = 'hard'
---
+-- let g:gruvbox_material_background = 'soft'
+-- 
 -- let g:gruvbox_material_better_performance = 1
 -- colorscheme gruvbox-material
--- colorscheme kanagawa-dragon
--- colorscheme ash
 -- ]]
 
 -- vim.cmd "color kanagawa-dragon"
 -- vim.cmd "color kanagawa-wave"
+
 vim.cmd "color onenord"
 
 vim.treesitter.language.register('rust', 'rhai')
@@ -36,7 +35,7 @@ nore("n", "<localleader>i", function() vim.lsp.inlay_hint.enable(not vim.lsp.inl
 
 nore("n", "<localleader>tt", ":tab split<CR>", true)
 nore("n", "<Tab>", ":tabn<CR>", true)
-nore("n", "<S-Tab>", ":tabn<CR>", true)
+nore("n", "<S-Tab>", ":tabp<CR>", true)
 nore("n", "<Esc>", ":nohls<CR>", true)
 nore("n", ";", ":", false)
 nore("n", "<C-b>", ":ls<CR>", false)
@@ -100,3 +99,5 @@ for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) d
     return default_diagnostic_handler(err, result, context, config)
   end
 end
+
+vim.cmd "set rtp-=/home/vaiva/.local/share/nvim/site"

@@ -18,12 +18,12 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
 require('lazy').setup({
-  { 'rebelot/kanagawa.nvim',            priority = 1000 },
-  { 'sainnhe/gruvbox-material',         priority = 1000 },
-  { 'slugbyte/lackluster.nvim',         priority = 1000 },
-  { 'xero/miasma.nvim',                 priority = 1000 },
-  { 'aktersnurra/no-clown-fiesta.nvim', priority = 1000 },
-  { 'drewxs/ash.nvim',                  priority = 1000 },
+  -- { 'rebelot/kanagawa.nvim',            priority = 1000 },
+  -- { 'sainnhe/gruvbox-material',         priority = 1000 },
+  -- { 'slugbyte/lackluster.nvim',         priority = 1000 },
+  -- { 'xero/miasma.nvim',                 priority = 1000 },
+  -- { 'aktersnurra/no-clown-fiesta.nvim', priority = 1000 },
+  -- { 'drewxs/ash.nvim',                  priority = 1000 },
   { 'rmehri01/onenord.nvim',            priority = 1000 },
 
   'rstacruz/vim-closer',
@@ -43,11 +43,12 @@ require('lazy').setup({
       'MunifTanjim/nui.nvim',
       -- '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
     },
+    keys = {
+      { "<localleader>v", ":Neotree toggle current reveal<CR>", silent=true },
+      { "<localleader>r", ":Neotree toggle right reveal<CR>", silent=true },
+      { "<localleader>g", ":tabe<CR>:Neotree git_status toggle current<CR>", silent=true },
+    },
     config = function()
-      vim.cmd 'nnore <silent> <localleader>v :Neotree toggle current reveal<CR>'
-      -- vim.cmd 'nnore <silent> <localleader>v :Neotree toggle float reveal<CR>'
-      vim.cmd 'nnore <silent> <localleader>r :Neotree toggle right reveal<CR>'
-      vim.cmd 'nnore <silent> <localleader>g :tabe<CR>:Neotree git_status toggle current<CR>'
       require('neo-tree').setup({
         filesystem = {
           window = {
@@ -104,7 +105,7 @@ require('lazy').setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    build = { ':TSUpdateSync' },
+    build = { ':TSUpdate' },
     branch = 'main',
     config = function()
       require 'nvim-treesitter.config'.setup {
@@ -136,18 +137,21 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
     },
-    config = function()
-      vim.cmd [[
-      nnore <silent> <localleader>ff :lua require'telescope.builtin'.find_files{}<CR>
-      nnore <silent> <localleader>fb :lua require'telescope.builtin'.buffers{}<CR>
-      nnore <silent> <localleader>fh :lua require'telescope.builtin'.help_tags{}<CR>
-      nnore <silent> <localleader>fg :lua require'telescope.builtin'.live_grep{}<CR>
-      nnore <silent> <localleader>fd :lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>
-      nnore <silent> <localleader>fD :lua require'telescope.builtin'.diagnostics{}<CR>
-      nnore <silent> <localleader>fs :lua require'telescope.builtin'.lsp_document_symbols{}<CR>
-      nnore <silent> <localleader>fm :lua require'telescope.builtin'.man_pages{sections={"ALL"}}<CR>
-      ]]
-    end
+    keys = {
+      { "<localleader>ff", ":lua require'telescope.builtin'.find_files{}<CR>", silent=true },
+      { "<localleader>fb", ":lua require'telescope.builtin'.buffers{}<CR>", silent=true },
+      { "<localleader>fh", ":lua require'telescope.builtin'.help_tags{}<CR>", silent=true },
+      { "<localleader>fg", ":lua require'telescope.builtin'.live_grep{}<CR>", silent=true },
+      { "<localleader>fd", ":lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", silent=true },
+      { "<space>q", ":lua require'telescope.builtin'.diagnostics{bufnr=0}<CR>", silent=true },
+      { "<localleader>fD", ":lua require'telescope.builtin'.diagnostics{}<CR>", silent=true },
+      { "<localleader>fs", ":lua require'telescope.builtin'.lsp_document_symbols{}<CR>", silent=true },
+      { "<localleader>fm", ":lua require'telescope.builtin'.man_pages{sections={'ALL'}}<CR>", silent=true },
+      { "<localleader>f'", ":lua require'telescope.builtin'.marks{}<CR>", silent=true },
+      { "gd", ":lua require'telescope.builtin'.lsp_definitions{}<CR>", silent=true },
+      { "gt", ":lua require'telescope.builtin'.lsp_type_definitions{}<CR>", silent=true },
+      { "gr", ":lua require'telescope.builtin'.lsp_references{}<CR>", silent=true },
+    },
   },
 
   'hrsh7th/cmp-nvim-lsp',
@@ -218,31 +222,49 @@ require('lazy').setup({
         name = "wiki",
         path = os.getenv("HOME") .. "/wiki",
       },
+      {
+        name = "work",
+        path = os.getenv("HOME") .. "/work/notes",
+      },
     },
     keys = {
       { "<localleader>ww", ":lua require(\"kiwi\").open_wiki_index()<cr>", desc = "Open Wiki index" },
+      { "<localleader>wo", ":lua require(\"kiwi\").open_wiki_index(\"work\")<cr>", desc = "Open Wiki index" },
       { "T",               ":lua require(\"kiwi\").todo.toggle()<cr>",     desc = "Toggle Markdown Task" }
     },
     lazy = true
   },
 
-  'norcalli/nvim-colorizer.lua',
+  -- 'norcalli/nvim-colorizer.lua',
+
+  -- {
+  --   "Djancyp/custom-theme.nvim",
+  --   config = function()
+  --     require("custom-theme").setup()
+  --   end,
+  -- },
 
   {
-    "Djancyp/custom-theme.nvim",
-    config = function()
-      require("custom-theme").setup()
-    end,
-  },
-
-  {
-    -- "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    -- config = function()
-    --   require("lsp_lines").setup()
-    --   vim.diagnostic.config({
-    --     virtual_text = true,
-    --     virtual_lines = { only_current_line = true },
-    --   })
-    -- end,
-  },
+    "f-person/git-blame.nvim",
+    -- load the plugin at startup
+    cmd = "GitBlameToggle",
+    -- Because of the keys part, you will be lazy loading this plugin.
+    -- The plugin will only load once one of the keys is used.
+    -- If you want to load the plugin at startup, add something like event = "VeryLazy",
+    -- or lazy = false. One of both options will work.
+    opts = {
+      -- your configuration comes here
+      -- for example
+      enabled = false,  -- if you want to enable the plugin
+      message_template = "   <author> - <date> - <sha> ", -- template for the blame message, check the Message template section for more options
+      message_when_not_committed = "   Not commited ",
+      -- message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
+      -- date_format = "%m-%d-%Y %H:%M", -- template for the date, check Date format section for more options
+      date_format = "%r",
+      virtual_text_column = 85,  -- virtual text start column, check Start virtual text at column section for more options
+    },
+    keys = {
+      { "<localleader>b", ":GitBlameToggle<CR>", silent = true },
+    },
+  }
 })

@@ -83,15 +83,10 @@ lspconfig('rust_analyzer', {
 })
 vim.lsp.enable('rust_analyzer')
 
-lspconfig('pyright', {
-  cmd = {
-    vim.env.HOME .. '/.cargo/bin/uvx',
-    'ty',
-    'server',
-  },
+lspconfig('ty', {
   capabilities = capabilities,
 })
-vim.lsp.enable('pyright')
+vim.lsp.enable('ty')
 
 lspconfig('ts_ls', { capabilities = capabilities })
 vim.lsp.enable('ts_ls')
