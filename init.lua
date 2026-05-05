@@ -31,7 +31,9 @@ local function nore(where, lhs, rhs, silent)
   vim.keymap.set(where, lhs, rhs, { silent = silent })
 end
 
-nore("n", "<localleader>i", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, true)
+nore("n", "<localleader>i", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, true)
 
 nore("n", "<localleader>tt", ":tab split<CR>", true)
 nore("n", "<Tab>", ":tabn<CR>", true)
@@ -40,6 +42,7 @@ nore("n", "<Esc>", ":nohls<CR>", true)
 nore("n", ";", ":", false)
 nore("n", "<C-b>", ":ls<CR>", false)
 nore("n", "<C-l>", ":set invlist<CR>:redr!<CR>", true)
+-- nore("n", ":", "q:", true)
 
 nore("t", "<Esc>", "<C-\\><C-n>", false)
 nore("t", "<S-Tab>", "<C-d>", false)
@@ -47,7 +50,6 @@ nore("t", "<S-Tab>", "<C-d>", false)
 nore("i", "<S-Tab>", "<C-d>", false)
 
 nore("i", "<C-r><C-r>", "<C-r>\"", true)
-
 
 local set          = vim.opt
 set.sw             = 2
@@ -58,7 +60,8 @@ set.nu             = true
 set.rnu            = true
 set.cul            = true
 set.culopt         = "both"
-set.fdm            = "syntax"
+set.fdm            = "expr"
+set.foldexpr       = "v:lua.vim.treesitter.foldexpr()"
 set.hls            = true
 set.scs            = true
 set.ic             = true
@@ -100,4 +103,20 @@ for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) d
   end
 end
 
-vim.cmd "set rtp-=/home/vaiva/.local/share/nvim/site"
+ts_fts = {
+  "*.c",
+  "*.cpp",
+  "*.lua",
+  "*.md",
+  "*.py",
+  "*.rhai",
+  "*.rs",
+  "*.toml",
+  "*.wgsl",
+  "*.yaml,*.yml",
+  "Dockerfile,*.Dockerfile",
+  "COMMIT_EDITMSG",
+}
+for _,ft in ipairs(ts_fts) do
+  vim.cmd("au BufRead,BufNewFile " .. ft .. " lua vim.treesitter.start()")
+end

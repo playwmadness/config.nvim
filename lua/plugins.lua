@@ -107,26 +107,6 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = { ':TSUpdate' },
     branch = 'main',
-    config = function()
-      require 'nvim-treesitter.config'.setup {
-        ensure_installed = {
-          'c', 'lua', 'vim',
-          'vimdoc', 'query',
-          'markdown', 'markdown_inline',
-          'rust', 'ron', 'toml',
-        },
-        auto_install = true,
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = true,
-        },
-        incremental_selection = {
-          enable = true,
-        },
-      }
-    end
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -266,5 +246,21 @@ require('lazy').setup({
     keys = {
       { "<localleader>b", ":GitBlameToggle<CR>", silent = true },
     },
-  }
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      search = { pattern = [[\s(KEYWORDS)(\([^\)]+\))?:]] },
+      highlight = { pattern = [[.*<((KEYWORDS)(\([^\)]+\))?):]] },
+      colors = {
+        info = { "Todo", "#ebcb8b" },
+      },
+    },
+    keys = {
+      { "<localleader>to", ":TodoTelescope<CR>", silent = true },
+    },
+    lazy = false,
+  },
 })
